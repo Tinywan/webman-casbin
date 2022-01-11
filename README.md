@@ -12,12 +12,18 @@ webman casbin plugin
 
 ## export
 
-```phpregexp
+```php
 php webman plugin:export --name=webman/casbin --source=config/plugin/tinywan/casbin
 ```
 
 ## install
 
-```phpregexp
+```php
 composer require tinywan/casbin
+```
+
+## uninstall
+
+```php
+composer remove tinywan/casbin
 ```

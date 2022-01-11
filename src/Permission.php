@@ -80,23 +80,18 @@ class Permission implements Bootstrap
      */
     public static function start($worker)
     {
-        $default = config('permission.default');
-        if (empty($default)) {
-            throw new \RuntimeException("Casbin permission.php config not found.");
-        }
-        $config = config('permission.enforcers.'.$default);
-        $configType = $config['model']['config_type'];
+        $configType = config('plugin.tinywan.casbin.permission.basic.model.config_type');
         $model = new Model();
         if ('file' == $configType) {
-            $model->loadModel($config['model']['config_file_path']);
-        } elseif ('text' == $$configType) {
-            $model->loadModel($config['model']['config_text']);
+            $model->loadModel(config('plugin.tinywan.casbin.permission.basic.model.config_file_path'));
+        } elseif ('text' == $configType) {
+            $model->loadModel(config('plugin.tinywan.casbin.permission.basic.model.config_text'));
         }
         if (is_null(static::$_manager)) {
-            static::$_manager = new Enforcer($model, Container::get($config['adapter']),false);
+            static::$_manager = new Enforcer($model, Container::get(config('plugin.tinywan.casbin.permission.basic.adapter')),false);
         }
         // 多进程需要使用watcher，这里使用定时器定时刷新策略
-        Timer::add($config['policy_refresh_time_interval'], function () {
+        Timer::add(config('plugin.tinywan.casbin.permission.basic.policy_refresh_time'), function () {
             static::$_manager->loadPolicy();
         });
     }
