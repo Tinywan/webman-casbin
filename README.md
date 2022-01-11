@@ -12,7 +12,7 @@ webman casbin 权限控制插件。它基于 [PHP-Casbin](https://github.com/php
 
 在这之前，你需要了解 [Casbin](https://github.com/php-casbin/php-casbin) 的相关知识。
 
-> 插件需要webman>=1.2.0 webman-framework>=1.2.0
+> 插件需要 `webman>=1.2.0` `webman-framework>=1.2.0`
 
 ## 依赖
 
