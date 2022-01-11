@@ -254,7 +254,7 @@ class DatabaseAdapter implements Adapter, UpdatableAdapter, BatchAdapter, Filter
             }
         });
     }
-    
+
     /**
      * UpdateFilteredPolicies deletes old rules and adds new rules.
      *
@@ -295,7 +295,7 @@ class DatabaseAdapter implements Adapter, UpdatableAdapter, BatchAdapter, Filter
                 });
                 unset($item['ptype']);
             }
-            
+
             $oldRules->delete();
             $this->model->insertAll($newP);
         });

@@ -17,7 +17,7 @@ return [
         'adapter' => \Tinywan\Casbin\Adapter\DatabaseAdapter::class,
         'database' => [
             'connection' => '',
-            'rules_table' => 'sys_casbin_rule',
+            'rules_table' => 'casbin_rule',
         ],
         # 多进程策略定时刷新时间，单位秒
         'policy_refresh_time' => 180
