@@ -5,6 +5,7 @@
  * @date 2022/01/11 20:20
  */
 return [
+    'default' => 'basic',
     'basic' => [
         # Model 设置
         'model' => [
@@ -13,7 +14,7 @@ return [
             'config_text' => '',
         ],
         # 适配器
-        'adapter' => \Tinywan\Casbin\model\DatabaseAdapter::class,
+        'adapter' => \Tinywan\Casbin\Adapter\DatabaseAdapter::class,
         'database' => [
             'connection' => '',
             'rules_table' => 'sys_casbin_rule',

@@ -8,13 +8,13 @@
 
 declare(strict_types=1);
 
-namespace Tinywan\Casbin\model;
+namespace Tinywan\Casbin\Model;
 
 use think\Model;
 use think\contract\Arrayable;
 
 /**
- * CasbinRule Model
+ * RuleModel Model
  */
 class RuleModel extends Model implements Arrayable
 {
@@ -56,7 +56,7 @@ class RuleModel extends Model implements Arrayable
      */
     protected function config(string $key = null, $default = null)
     {
-        $driver = config('permission.default');
-        return config('permission.enforcers.' . $driver . '.' . $key, $default);
+        $driver = config('plugin.tinywan.casbin.permission.default');
+        return config('plugin.tinywan.casbin.permission.' . $driver . '.' . $key, $default);
     }
 }
