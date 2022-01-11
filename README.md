@@ -1,4 +1,4 @@
-# casbin
+# webman casbin plugin
 
 [![license](https://img.shields.io/github/license/Tinywan/casbin)]()
 [![996.icu](https://img.shields.io/badge/link-996.icu-red.svg)](https://996.icu)
