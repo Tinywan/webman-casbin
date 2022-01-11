@@ -8,8 +8,7 @@ class Install
     /**
      * @var array
      */
-    protected static $pathRelation = array (
-);
+    protected static $pathRelation = array ('config/plugin/tinywan/casbin' => 'config/plugin/tinywan/casbin');
 
     /**
      * Install
