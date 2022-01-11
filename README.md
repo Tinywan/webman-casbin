@@ -19,6 +19,18 @@ webman casbin 权限控制插件。它基于 [PHP-Casbin](https://github.com/php
 - [ThinkORM](https://github.com/top-think/think-orm)
 - [PHP-DI](https://github.com/PHP-DI/PHP-DI)
 
+## 依赖注入配置
+
+修改配置`config/container.php`，其最终内容如下：
+
+```php
+$builder = new \DI\ContainerBuilder();
+$builder->addDefinitions(config('dependence', []));
+$builder->useAutowiring(true);
+return $builder->build();
+```
+> `config/container.php`里最终返回一个符合PSR-11规范的容器实例。如果你不想使用 php-di ，可以在这里创建并返回一个其它符合PSR-11规范的容器实例。
+
 ## 安装
 
 ```sh
