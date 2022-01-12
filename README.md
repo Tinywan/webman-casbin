@@ -1,10 +1,9 @@
 # webman casbin 权限控制插件
 
-[![license](https://img.shields.io/github/license/Tinywan/casbin)]()
-[![996.icu](https://img.shields.io/badge/link-996.icu-red.svg)](https://996.icu)
-[![Build status](https://github.com/Tinywan/dnmp/workflows/CI/badge.svg)]()
-[![webman-event](https://img.shields.io/github/v/release/tinywan/casbin?include_prereleases)]()
-[![webman-event](https://img.shields.io/badge/build-passing-brightgreen.svg)]()
+[![Latest Stable Version](http://poser.pugx.org/tinywan/casbin/v)](https://packagist.org/packages/tinywan/casbin) 
+[![Total Downloads](http://poser.pugx.org/tinywan/casbin/downloads)](https://packagist.org/packages/tinywan/casbin) 
+[![License](http://poser.pugx.org/tinywan/casbin/license)](https://packagist.org/packages/tinywan/casbin) 
+[![PHP Version Require](http://poser.pugx.org/tinywan/casbin/require/php)](https://packagist.org/packages/tinywan/casbin)
 [![webman-event](https://img.shields.io/github/last-commit/tinywan/casbin/main)]()
 [![webman-event](https://img.shields.io/github/v/tag/tinywan/casbin?color=ff69b4)]()
 
