@@ -45,21 +45,18 @@ composer require tinywan/casbin
 
 ```sql
 CREATE TABLE `casbin_rule` (
-  `p_type` varchar(100) NOT NULL DEFAULT '',
-  `v0` varchar(100) NOT NULL DEFAULT '',
-  `v1` varchar(100) NOT NULL DEFAULT '',
-  `v2` varchar(100) NOT NULL DEFAULT '',
-  `v3` varchar(100) NOT NULL DEFAULT '',
-  `v4` varchar(100) NOT NULL DEFAULT '',
-  `v5` varchar(100) NOT NULL DEFAULT '',
-  KEY `IDX_casbin_rule_v5` (`v5`),
-  KEY `IDX_casbin_rule_p_type` (`p_type`),
-  KEY `IDX_casbin_rule_v0` (`v0`),
-  KEY `IDX_casbin_rule_v1` (`v1`),
-  KEY `IDX_casbin_rule_v2` (`v2`),
-  KEY `IDX_casbin_rule_v3` (`v3`),
-  KEY `IDX_casbin_rule_v4` (`v4`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+  `id` bigint(20) unsigned NOT NULL AUTO_INCREMENT,
+  `ptype` varchar(255) DEFAULT NULL,
+  `v0` varchar(255) DEFAULT NULL,
+  `v1` varchar(255) DEFAULT NULL,
+  `v2` varchar(255) DEFAULT NULL,
+  `v3` varchar(255) DEFAULT NULL,
+  `v4` varchar(255) DEFAULT NULL,
+  `v5` varchar(100) DEFAULT NULL,
+  PRIMARY KEY (`id`) USING BTREE,
+  KEY `idx_ptype` (`ptype`) USING BTREE,
+  KEY `idx_v0` (`v0`) USING BTREE
+) ENGINE=InnoDB AUTO_INCREMENT=312 DEFAULT CHARSET=utf8mb4 COMMENT='系统-策略规则表';
 ```
 
 ## 重启webman
