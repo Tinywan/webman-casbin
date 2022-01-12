@@ -18,7 +18,7 @@ webman casbin 权限控制插件。它基于 [PHP-Casbin](https://github.com/php
 - [ThinkORM](https://github.com/top-think/think-orm)
 - [PHP-DI](https://github.com/PHP-DI/PHP-DI)
 
-## 依赖注入配置
+#### 依赖注入配置
 
 修改配置`config/container.php`，其最终内容如下：
 
@@ -57,6 +57,16 @@ CREATE TABLE `casbin_rule` (
   KEY `idx_ptype` (`ptype`(191)) USING BTREE,
   KEY `idx_v0` (`v0`(191)) USING BTREE
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COMMENT='策略规则表';
+```
+
+## 重启webman
+
+```
+php start.php restart
+```
+或者
+```
+php start.php restart -d
 ```
 
 ## 用法
