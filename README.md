@@ -28,7 +28,6 @@ $builder->addDefinitions(config('dependence', []));
 $builder->useAutowiring(true);
 return $builder->build();
 ```
-> `config/container.php`里最终返回一个符合PSR-11规范的容器实例。如果你不想使用 php-di ，可以在这里创建并返回一个其它符合PSR-11规范的容器实例。
 
 ## 安装
 
