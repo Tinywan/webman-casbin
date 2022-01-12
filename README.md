@@ -15,7 +15,7 @@ webman casbin 权限控制插件。它基于 [PHP-Casbin](https://github.com/php
 
 ## 依赖
 
-- [ThinkORM](https://github.com/top-think/think-orm)
+- [ThinkORM](https://www.workerman.net/doc/webman/db/others.html)
 - [PHP-DI](https://github.com/PHP-DI/PHP-DI)
 
 #### 依赖注入配置
@@ -39,24 +39,27 @@ composer require tinywan/casbin
 
 ### 数据库配置
 
-（1）创建数据库 `webman`
+（1）修改数据库 `thinkorm` 配置
 
-（2）创建数据表
+（2）创建 `casbin_rule` 数据表
 
 ```sql
 CREATE TABLE `casbin_rule` (
-  `id` bigint(20) unsigned NOT NULL AUTO_INCREMENT,
-  `ptype` varchar(255) DEFAULT NULL,
-  `v0` varchar(255) DEFAULT NULL,
-  `v1` varchar(255) DEFAULT NULL,
-  `v2` varchar(255) DEFAULT NULL,
-  `v3` varchar(255) DEFAULT NULL,
-  `v4` varchar(255) DEFAULT NULL,
-  `v5` varchar(100) DEFAULT NULL,
-  PRIMARY KEY (`id`) USING BTREE,
-  KEY `idx_ptype` (`ptype`(191)) USING BTREE,
-  KEY `idx_v0` (`v0`(191)) USING BTREE
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COMMENT='策略规则表';
+  `p_type` varchar(100) NOT NULL DEFAULT '',
+  `v0` varchar(100) NOT NULL DEFAULT '',
+  `v1` varchar(100) NOT NULL DEFAULT '',
+  `v2` varchar(100) NOT NULL DEFAULT '',
+  `v3` varchar(100) NOT NULL DEFAULT '',
+  `v4` varchar(100) NOT NULL DEFAULT '',
+  `v5` varchar(100) NOT NULL DEFAULT '',
+  KEY `IDX_casbin_rule_v5` (`v5`),
+  KEY `IDX_casbin_rule_p_type` (`p_type`),
+  KEY `IDX_casbin_rule_v0` (`v0`),
+  KEY `IDX_casbin_rule_v1` (`v1`),
+  KEY `IDX_casbin_rule_v2` (`v2`),
+  KEY `IDX_casbin_rule_v3` (`v3`),
+  KEY `IDX_casbin_rule_v4` (`v4`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 ```
 
 ## 重启webman
