@@ -45,18 +45,23 @@ composer require tinywan/casbin
 
 ```sql
 CREATE TABLE `casbin_rule` (
-  `id` bigint(20) unsigned NOT NULL AUTO_INCREMENT,
-  `ptype` varchar(255) DEFAULT NULL,
-  `v0` varchar(255) DEFAULT NULL,
-  `v1` varchar(255) DEFAULT NULL,
-  `v2` varchar(255) DEFAULT NULL,
-  `v3` varchar(255) DEFAULT NULL,
-  `v4` varchar(255) DEFAULT NULL,
-  `v5` varchar(100) DEFAULT NULL,
-  PRIMARY KEY (`id`) USING BTREE,
-  KEY `idx_ptype` (`ptype`) USING BTREE,
-  KEY `idx_v0` (`v0`) USING BTREE
-) ENGINE=InnoDB AUTO_INCREMENT=312 DEFAULT CHARSET=utf8mb4 COMMENT='系统-策略规则表';
+	`id` BIGINT ( 20 ) UNSIGNED NOT NULL AUTO_INCREMENT,
+	`ptype` VARCHAR ( 128 ) NOT NULL DEFAULT '',
+	`v0` VARCHAR ( 128 ) NOT NULL DEFAULT '',
+	`v1` VARCHAR ( 128 ) NOT NULL DEFAULT '',
+	`v2` VARCHAR ( 128 ) NOT NULL DEFAULT '',
+	`v3` VARCHAR ( 128 ) NOT NULL DEFAULT '',
+	`v4` VARCHAR ( 128 ) NOT NULL DEFAULT '',
+	`v5` VARCHAR ( 128 ) NOT NULL DEFAULT '',
+	PRIMARY KEY ( `id` ) USING BTREE,
+	KEY `idx_ptype` ( `ptype` ) USING BTREE,
+	KEY `idx_v0` ( `v0` ) USING BTREE,
+	KEY `idx_v1` ( `v1` ) USING BTREE,
+	KEY `idx_v2` ( `v2` ) USING BTREE,
+	KEY `idx_v3` ( `v3` ) USING BTREE,
+	KEY `idx_v4` ( `v4` ) USING BTREE,
+    KEY `idx_v5` ( `v5` ) USING BTREE 
+) ENGINE = INNODB CHARSET = utf8mb4 COMMENT = '策略规则表';
 ```
 
 ## 重启webman
