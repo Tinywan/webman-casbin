@@ -3,7 +3,7 @@
 /**
  * @desc Real Policy Model
  * @author Tinywan(ShaoBo Wan)
- * @date 2021/8/28 10:37
+ * @date 2022/01/12 10:37
  */
 
 declare(strict_types=1);
@@ -31,8 +31,9 @@ class RuleModel extends Model implements Arrayable
         'v2'    => 'string',
         'v3'    => 'string',
         'v4'    => 'string',
-        'v5'    => 'string',
+        'v5'    => 'string'
     ];
+
     /**
      * 架构函数
      * @access public
@@ -49,8 +50,8 @@ class RuleModel extends Model implements Arrayable
     /**
      * Gets config value by key.
      *
-     * @param string $key
-     * @param string $default
+     * @param string|null $key
+     * @param null $default
      *
      * @return mixed
      */

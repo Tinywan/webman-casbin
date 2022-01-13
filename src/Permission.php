@@ -74,7 +74,7 @@ class Permission implements Bootstrap
 
     /**
      * @param Worker $worker
-     * @return mixed|void
+     * @return void
      * @throws CasbinException
      * @author Tinywan(ShaoBo Wan)
      */

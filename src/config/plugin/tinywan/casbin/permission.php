@@ -2,7 +2,7 @@
 /**
  * @desc permission.php 描述信息
  * @author Tinywan(ShaoBo Wan)
- * @date 2022/01/11 20:20
+ * @date 2022/01/12 20:20
  */
 return [
     'default' => 'basic',
@@ -18,6 +18,7 @@ return [
         'database' => [
             'connection' => '',
             'rules_table' => 'casbin_rule',
+            'rules_name' => null
         ],
         # 多进程策略定时刷新时间，单位秒
         'policy_refresh_time' => 180
