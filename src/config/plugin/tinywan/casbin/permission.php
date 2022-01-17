@@ -6,6 +6,7 @@
  */
 return [
     'default' => 'basic',
+    'load_policy' => 'timer',
     'basic' => [
         # Model 设置
         'model' => [
