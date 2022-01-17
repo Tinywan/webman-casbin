@@ -15,7 +15,6 @@ use Casbin\Exceptions\CasbinException;
 use Casbin\Model\Model;
 use support\Container;
 use Tinywan\Casbin\Watcher\RedisWatcher;
-use Workerman\Timer;
 use Workerman\Worker;
 use Webman\Bootstrap;
 
@@ -53,27 +52,6 @@ class Permission implements Bootstrap
     protected static $_manager = null;
 
     /**
-     * Permission constructor.
-     * Creates an Permission via file or DB.
-     * File:
-     * $e = new Permission("path/to/basic_model.conf", "path/to/basic_policy.csv")
-     * MySQL DB:
-     * $a = DatabaseAdapter::newAdapter([
-     *      'type'     => 'mysql', // mysql,pgsql,sqlite,sqlsrv
-     *      'hostname' => '127.0.0.1',
-     *      'database' => 'test',
-     *      'username' => 'root',
-     *      'password' => '123456',
-     *      'hostport' => '3306',
-     *  ]);
-     * $e = new Permission("path/to/basic_model.conf", $a).
-     *
-     * @param mixed ...$params
-     *
-     * @throws CasbinException
-     */
-
-    /**
      * @param Worker $worker
      * @return void
      * @throws CasbinException
@@ -92,22 +70,11 @@ class Permission implements Bootstrap
             static::$_manager = new Enforcer($model, Container::get(config('plugin.tinywan.casbin.permission.basic.adapter')),false);
         }
 
-        $loadPolicy = config('plugin.tinywan.casbin.permission.load_policy');
-        if ($loadPolicy === 'timer') {
-            // 多进程需要使用watcher，这里使用定时器定时刷新策略
-            Timer::add(config('plugin.tinywan.casbin.permission.basic.policy_refresh_time'), function () {
-                static::$_manager->loadPolicy();
-            });
-        } elseif ($loadPolicy === 'redis') {
-            $watcher = new RedisWatcher(config('redis.default'));
-            var_dump($watcher);
-            $watcher->setUpdateCallback(function () {
-                echo '[x] Now should reload all policies.' . PHP_EOL;
-                static::$_manager->loadPolicy();
-            });
-            static::$_manager->setWatcher($watcher);
-        }
-
+        $watcher = new RedisWatcher(config('redis.default'));
+        static::$_manager->setWatcher($watcher);
+        $watcher->setUpdateCallback(function () {
+            static::$_manager->loadPolicy();
+        });
     }
 
     /**

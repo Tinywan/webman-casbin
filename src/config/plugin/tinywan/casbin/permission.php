@@ -6,7 +6,6 @@
  */
 return [
     'default' => 'basic',
-    'load_policy' => 'timer',
     'basic' => [
         # Model 设置
         'model' => [
@@ -21,7 +20,5 @@ return [
             'rules_table' => 'casbin_rule',
             'rules_name' => null
         ],
-        # 多进程策略定时刷新时间，单位秒
-        'policy_refresh_time' => 180
     ]
 ];

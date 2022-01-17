@@ -13,6 +13,8 @@ webman casbin 权限控制插件。它基于 [PHP-Casbin](https://github.com/php
 
 > 插件需要 `webman>=1.2.0` `webman-framework>=1.2.0`
 
+> 推荐使用 ` >= v0.0.7` 版本，该版本使用多进程Watcher替换了之前的定时器模式（无效的刷新策略问题）
+
 ## 依赖
 
 - [ThinkORM](https://www.workerman.net/doc/webman/db/others.html)
@@ -63,6 +65,13 @@ CREATE TABLE `casbin_rule` (
     KEY `idx_v5` ( `v5` ) USING BTREE 
 ) ENGINE = INNODB CHARSET = utf8mb4 COMMENT = '策略规则表';
 ```
+（3）配置 `config/redis` 配置
+
+> 1. 由于webman是基于workerman的常驻内存框架。运行模式为多进程，而多进程中数据是互相隔离的。
+> 2. 在webman中使用casbin，当`Enforcer`中的策略发生变化时，调用 `Watcher`，向消息队列（MW）中推动消息，监听该消息队列的`Enforcer`收到后，自动刷新该实例中的策略
+> 3. 这里通过 `workerman/redis` 的发布订阅模式实现
+
+>注意：在 `PHP-FPM` 环境下，并不需要Watcher，因为每个请求都是一个独立的fpm进程，都会实例化一个全新的`Enforcer`
 
 ## 重启webman
 
