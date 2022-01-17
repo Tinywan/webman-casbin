@@ -68,7 +68,7 @@ CREATE TABLE `casbin_rule` (
 （3）配置 `config/redis` 配置
 
 > 1. 由于webman是基于workerman的常驻内存框架。运行模式为多进程，而多进程中数据是互相隔离的。
-> 2. 在webman中使用casbin，当`Enforcer`中的策略发生变化时，调用 `Watcher`，向消息队列（MW）中推动消息，监听该消息队列的`Enforcer`收到后，自动刷新该实例中的策略
+> 2. 在webman中使用casbin，当`Enforcer`中的策略发生变化时，调用 `Watcher`，向消息队列（MQ）中推动消息，监听该消息队列的`Enforcer`收到后，自动刷新该实例中的策略
 > 3. 这里通过 `workerman/redis` 的发布订阅模式实现
 
 >注意：在 `PHP-FPM` 环境下，并不需要Watcher，因为每个请求都是一个独立的fpm进程，都会实例化一个全新的`Enforcer`
