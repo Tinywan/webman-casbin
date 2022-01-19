@@ -13,8 +13,6 @@ webman casbin 权限控制插件。它基于 [PHP-Casbin](https://github.com/php
 
 > 插件需要 `webman>=1.2.0` `webman-framework>=1.2.0`
 
-> 推荐使用 ` >= v0.0.7` 版本，该版本使用多进程Watcher替换了之前的定时器模式（无效的刷新策略问题）
-
 ## 依赖
 
 - [ThinkORM](https://www.workerman.net/doc/webman/db/others.html)
