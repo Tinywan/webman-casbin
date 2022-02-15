@@ -9,16 +9,20 @@
 
 webman casbin 权限控制插件。它基于 [PHP-Casbin](https://github.com/php-casbin/php-casbin), 一个强大的、高效的开源访问控制框架，支持基于`ACL`, `RBAC`, `ABAC`等访问控制模型。
 
-在这之前，你需要了解 [Casbin](https://github.com/php-casbin/php-casbin) 的相关知识。
-
-> 插件需要 `webman>=1.2.0` `webman-framework>=1.2.0`
-
 ## 依赖
 
 - [ThinkORM](https://www.workerman.net/doc/webman/db/others.html)
 - [PHP-DI](https://github.com/PHP-DI/PHP-DI)
 
-#### 依赖注入配置
+## 安装
+
+```sh
+composer require tinywan/casbin
+```
+
+## 配置
+
+### 1、DI容器配置（必须）
 
 修改配置`config/container.php`，其最终内容如下：
 
@@ -29,15 +33,7 @@ $builder->useAutowiring(true);
 return $builder->build();
 ```
 
-## 安装
-
-```sh
-composer require tinywan/casbin
-```
-
-## 配置
-
-### 数据库配置
+### 2、数据库配置
 
 （1）修改数据库 `thinkorm` 配置
 
@@ -64,6 +60,7 @@ CREATE TABLE `casbin_rule` (
 ) ENGINE = INNODB CHARSET = utf8mb4 COMMENT = '策略规则表';
 ```
 （3）配置 `config/redis` 配置
+
 ## 重启webman
 
 ```
