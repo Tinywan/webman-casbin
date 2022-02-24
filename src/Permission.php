@@ -10,6 +10,7 @@ declare(strict_types=1);
 namespace Tinywan\Casbin;
 
 
+use Casbin\CoreEnforcer;
 use Casbin\Enforcer;
 use Casbin\Exceptions\CasbinException;
 use Casbin\Model\Model;
@@ -59,22 +60,24 @@ class Permission implements Bootstrap
      */
     public static function start($worker)
     {
-        $configType = config('plugin.tinywan.casbin.permission.basic.model.config_type');
-        $model = new Model();
-        if ('file' == $configType) {
-            $model->loadModel(config('plugin.tinywan.casbin.permission.basic.model.config_file_path'));
-        } elseif ('text' == $configType) {
-            $model->loadModel(config('plugin.tinywan.casbin.permission.basic.model.config_text'));
-        }
-        if (is_null(static::$_manager)) {
-            static::$_manager = new Enforcer($model, Container::get(config('plugin.tinywan.casbin.permission.basic.adapter')),false);
-        }
+        if ($worker) {
+            $configType = config('plugin.tinywan.casbin.permission.basic.model.config_type');
+            $model = new Model();
+            if ('file' == $configType) {
+                $model->loadModel(config('plugin.tinywan.casbin.permission.basic.model.config_file_path'));
+            } elseif ('text' == $configType) {
+                $model->loadModel(config('plugin.tinywan.casbin.permission.basic.model.config_text'));
+            }
+            if (is_null(static::$_manager)) {
+                static::$_manager = new Enforcer($model, Container::get(config('plugin.tinywan.casbin.permission.basic.adapter')),false);
+            }
 
-        $watcher = new RedisWatcher(config('redis.default'));
-        static::$_manager->setWatcher($watcher);
-        $watcher->setUpdateCallback(function () {
-            static::$_manager->loadPolicy();
-        });
+            $watcher = new RedisWatcher(config('redis.default'));
+            static::$_manager->setWatcher($watcher);
+            $watcher->setUpdateCallback(function () {
+                static::$_manager->loadPolicy();
+            });
+        }
     }
 
     /**
