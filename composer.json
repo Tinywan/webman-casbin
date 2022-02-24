@@ -1,5 +1,6 @@
 {
   "name": "tinywan/casbin",
+  "description": "Webman Casbin Plugin",
   "type": "library",
   "license": "MIT",
   "require": {

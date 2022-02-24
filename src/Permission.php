@@ -10,7 +10,6 @@ declare(strict_types=1);
 namespace Tinywan\Casbin;
 
 
-use Casbin\CoreEnforcer;
 use Casbin\Enforcer;
 use Casbin\Exceptions\CasbinException;
 use Casbin\Model\Model;
