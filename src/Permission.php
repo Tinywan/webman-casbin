@@ -28,17 +28,19 @@ use Webman\Bootstrap;
  * @method static bool removePolicy(mixed ...$params) 当前策略移除授权规则
  * @method static getAllRoles() 获取所有角色
  * @method static getPolicy() 获取所有的角色的授权规则
- * @method static getRolesForUser(string $name, string ...$domain) 获取某个用户的所有角色
- * @method static getUsersForRole(string $name, string ...$domain) 获取某个角色的所有用户
- * @method static hasRoleForUser(string $name, string $role, string ...$domain) 决定用户是否拥有某个角色
+ * @method static getRolesForUser(string $name, string ...$domain) 获取用户具有的角色
+ * @method static getUsersForRole(string $name, string ...$domain) 获取具有角色的用户
+ * @method static hasRoleForUser(string $name, string $role, string ...$domain) 确定用户是否具有角色
  * @method static addRoleForUser(string $user, string $role, string ...$domain) 给用户添加角色
  * @method static addPermissionForUser(string $user, string ...$permission) 赋予权限给某个用户或角色
  * @method static deleteRoleForUser(string $user, string $role, string $domain) 删除用户的角色
  * @method static deleteRolesForUser(string $user, string ...$domain) 删除某个用户的所有角色
  * @method static deleteRole(string $role) 删除单个角色
- * @method static deletePermission(string ...$permission) 删除某个权限
- * @method static deletePermissionsForUser(string $user, string ...$permission) 删除某个用户或角色的权限
- * @method static getPermissionsForUser(string $user) 获取用户或角色的所有权限
+ * @method static deletePermission(string ...$permission) 删除权限
+ * @method static ddPermissionsForUser(string ...$permission) 为用户或角色添加多个权限
+ * @method static deletePermissionForUser(string $name, string $permission) 删除用户或角色的权限。如果用户或角色没有权限则返回 false(不会受影响)。
+ * @method static deletePermissionsForUser(string $name) 删除用户或角色的权限。如果用户或角色没有任何权限（也就是不受影响），则返回false。
+ * @method static getPermissionsForUser(string $name) 获取用户或角色的所有权限
  * @method static hasPermissionForUser(string $user, string ...$permission) 决定某个用户是否拥有某个权限
  * @method static getImplicitRolesForUser(string $name, string ...$domain) 获取用户具有的隐式角色
  * @method static getImplicitPermissionsForUser(string $username, string ...$domain) 获取用户具有的隐式权限
