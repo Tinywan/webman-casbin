@@ -100,14 +100,6 @@ if (Permission::enforce("eve", "articles", "edit")) {
 
 更多 `API` 参考 [Casbin API](https://casbin.org/docs/en/management-api) 。
 
-## 为什么要使用Redis
-
-1. 由于webman是基于workerman的常驻内存框架。运行模式为多进程，而多进程中数据是互相隔离的。
-2. 在webman中使用casbin，当`Enforcer`中的策略发生变化时，调用 `Watcher`，向消息队列（MQ）中推动消息，监听该消息队列的`Enforcer`收到后，自动刷新该实例中的策略
-3. 这里通过 `workerman/redis` 的发布订阅模式实现
-
-> 注意：在 `PHP-FPM` 环境下，并不需要Watcher，因为每个请求都是一个独立的fpm进程，都会实例化一个全新的`Enforcer`
-
 ## 感谢
 
 [Casbin](https://github.com/php-casbin/php-casbin)，你可以查看全部文档在其 [官网](https://casbin.org/) 上。
