@@ -1,4 +1,4 @@
-# webman casbin 权限控制插件
+# webman casbin plugin
 
 [![Latest Stable Version](http://poser.pugx.org/tinywan/casbin/v)](https://packagist.org/packages/tinywan/casbin) 
 [![Total Downloads](http://poser.pugx.org/tinywan/casbin/downloads)](https://packagist.org/packages/tinywan/casbin) 
