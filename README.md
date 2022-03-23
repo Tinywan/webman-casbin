@@ -1,3 +1,10 @@
+# 迁移说明
+> 🔰🔰🔰 **了方便维护，源仓库 [webman-casbin](https://github.com/Tinywan/webman-casbin ) 插件贡献给了 [PHP-Casbin](https://github.com/php-casbin/webman-permission) 官方**
+
+> 🔰🔰🔰 **为了方便维护，源仓库 [webman-casbin](https://github.com/Tinywan/webman-casbin )  插件贡献给了 [PHP-Casbin](https://github.com/php-casbin/webman-permission) 官方**
+
+> 🔰🔰🔰 **为了方便维护，源仓库 [webman-casbin](https://github.com/Tinywan/webman-casbin )  插件贡献给了 [PHP-Casbin](https://github.com/php-casbin/webman-permission) 官方**
+
 # webman casbin plugin
 
 [![Latest Stable Version](http://poser.pugx.org/tinywan/casbin/v)](https://packagist.org/packages/tinywan/casbin) 
