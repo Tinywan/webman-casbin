@@ -7,7 +7,7 @@
 [![webman-event](https://img.shields.io/github/last-commit/tinywan/casbin/main)]()
 [![webman-event](https://img.shields.io/github/v/tag/tinywan/casbin?color=ff69b4)]()
 
-webman casbin 权限控制插件。它基于 [PHP-Casbin](https://github.com/php-casbin/php-casbin), 一个强大的、高效的开源访问控制框架，支持基于`ACL`, `RBAC`, `ABAC`等访问控制模型。
+An authorization library that supports access control models like ACL, RBAC, ABAC for webman plugin
 
 ## 依赖
 
