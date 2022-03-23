@@ -9,22 +9,22 @@
 
 An authorization library that supports access control models like ACL, RBAC, ABAC for webman plugin
 
-## 依赖
+## Requirements
 
 - [ThinkORM](https://www.workerman.net/doc/webman/db/others.html)
 - [PHP-DI](https://github.com/PHP-DI/PHP-DI)
 
-## 安装
+## Installation
 
 ```sh
 composer require tinywan/casbin
 ```
 
-## 配置
+## Configure
 
-### 1、DI容器配置（必须）
+### 1、DI
 
-修改配置`config/container.php`，其最终内容如下：
+configure `config/container.php`，Its final content is as follows：
 
 ```php
 $builder = new \DI\ContainerBuilder();
@@ -33,7 +33,7 @@ $builder->useAutowiring(true);
 return $builder->build();
 ```
 
-### 2、数据库配置
+### 2、Database configuration
 
 （1）修改数据库 `thinkorm` 配置
 
