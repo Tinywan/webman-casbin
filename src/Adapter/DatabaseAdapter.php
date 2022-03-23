@@ -86,7 +86,7 @@ class DatabaseAdapter implements Adapter, UpdatableAdapter, BatchAdapter, Filter
         foreach ($rule as $key => $value) {
             $col['v' . strval($key) . ''] = $value;
         }
-        $this->model->save($col);
+        $this->model->insert($col);
     }
 
     /**
@@ -98,6 +98,10 @@ class DatabaseAdapter implements Adapter, UpdatableAdapter, BatchAdapter, Filter
     {
         $rows = $this->model->field(['ptype', 'v0', 'v1', 'v2', 'v3', 'v4', 'v5'])->select()->toArray();
         foreach ($rows as $row) {
+            // $line = implode(', ', array_filter(array_slice($row, 1), function ($val) {
+            //     return '' != $val && !is_null($val);
+            // }));
+            // $this->loadPolicyLine(trim($line), $model);
             $this->loadPolicyArray($this->filterRule($row), $model);
         }
     }
@@ -226,7 +230,7 @@ class DatabaseAdapter implements Adapter, UpdatableAdapter, BatchAdapter, Filter
             $item = $model->hidden(['id', 'ptype'])->toArray();
             $item = $this->filterRule($item);
             $removedRules[] = $item;
-            if ($model->delete()) {
+            if ($model->cache('tauthz')->delete()) {
                 ++$count;
             }
         }
@@ -303,6 +307,7 @@ class DatabaseAdapter implements Adapter, UpdatableAdapter, BatchAdapter, Filter
      */
     public function updateFilteredPolicies(string $sec, string $ptype, array $newPolicies, int $fieldIndex, string ...$fieldValues): array
     {
+
         $oldRules = [];
         DB::transaction(function () use ($sec, $ptype, $fieldIndex, $fieldValues, $newPolicies, &$oldRules) {
             $oldRules = $this->_removeFilteredPolicy($sec, $ptype, $fieldIndex, ...$fieldValues);
