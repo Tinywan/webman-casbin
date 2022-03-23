@@ -53,6 +53,26 @@ class DatabaseAdapter implements Adapter, UpdatableAdapter, BatchAdapter, Filter
     }
 
     /**
+     * Filter the rule.
+     *
+     * @param array $rule
+     * @return array
+     */
+    public function filterRule(array $rule): array
+    {
+        $rule = array_values($rule);
+
+        $i = count($rule) - 1;
+        for (; $i >= 0; $i--) {
+            if ($rule[$i] != '' && !is_null($rule[$i])) {
+                break;
+            }
+        }
+
+        return array_slice($rule, 0, $i + 1);
+    }
+
+    /**
      * savePolicyLine function.
      *
      * @param string $ptype
